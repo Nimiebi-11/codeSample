@@ -1,0 +1,34 @@
+import random
+
+class Player:
+    def __init__(self, name, health=100):
+        self.name = name
+        self.health = health
+
+    def take_damage(self, damage):
+        self.health -= damage
+        print(f"{self.name} took {damage} damage. Health: {self.health}")
+
+    def attack(self, enemy):
+        damage = random.randint(10, 20)
+        enemy.take_damage(damage)
+        print(f"{self.name} attacked {enemy.name} for {damage} damage.")
+
+
+class Enemy:
+    def __init__(self, name, health=50):
+        self.name = name
+        self.health = health
+
+    def take_damage(self, damage):
+        self.health -= damage
+        print(f"{self.name} took {damage} damage. Health: {self.health}")
+
+
+# Example of using the classes
+if __name__ == "__main__":
+    player = Player(name="Player1")
+    enemy = Enemy(name="Enemy1")
+
+    player.attack(enemy)
+    enemy.attack(player)
